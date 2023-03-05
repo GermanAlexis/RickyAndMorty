@@ -32,7 +32,6 @@ export class CharactersListComponent {
 
   onScrollDown() {
     this.countPages++;
-    console.log('this.countPages: ', this.countPages);
     this.dataServices.getDataPaginator(this.countPages);
   }
 }
