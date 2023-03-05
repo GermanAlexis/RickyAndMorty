@@ -10,8 +10,6 @@ import { finalize } from 'rxjs';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
-  constructor(private loadingService: SpinnerService) {}
-
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const loadingService = inject(SpinnerService);
     loadingService.show();
