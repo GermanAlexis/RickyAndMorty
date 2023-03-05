@@ -4,7 +4,7 @@ import {
   ICharacter,
 } from '@app/shared/interfaces/data.interface';
 import { Apollo, gql } from 'apollo-angular';
-import { BehaviorSubject, take, tap } from 'rxjs';
+import { BehaviorSubject, pluck, take, tap, withLatestFrom } from 'rxjs';
 import { IEpisode } from '../shared/interfaces/data.interface';
 
 const QUERY = gql`
@@ -53,6 +53,37 @@ export class DataServiceService {
           const { characters, episodes } = data;
           this.episodesSubject.next(episodes.results);
           this.charactersSubject.next(characters.results);
+        })
+      )
+      .subscribe();
+  }
+
+  public getDataPaginator(pagesNum: number): void {
+    const QUERYBYPAGE = gql`
+    {
+      characters(page: ${pagesNum}) {
+        results {
+            name
+            id
+            status
+            image
+            gender
+            species
+        }
+      }
+    }
+`;
+    this.apollo
+      .watchQuery<Dataresponse>({
+        query: QUERYBYPAGE,
+      })
+      .valueChanges.pipe(
+        take(1),
+        withLatestFrom(this.charactersSubject$),
+        tap(([data, characters]) => {
+          characters = [...characters, ...data.data.characters.results];
+
+          this.charactersSubject.next(characters);
         })
       )
       .subscribe();
