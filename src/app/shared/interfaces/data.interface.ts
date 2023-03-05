@@ -5,9 +5,11 @@ export interface IEpisode {
 
 export interface ICharacter {
   name: string;
+  gender: string;
   id: string;
-  status: string;
   image: string;
+  species: string;
+  status: string;
 }
 
 export interface ApiResponse<T> {

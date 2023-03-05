@@ -4,7 +4,7 @@ import { DataServiceService } from '../../../services/data-service.service';
 @Component({
   selector: 'app-characters-list',
   templateUrl: './characters-list.component.html',
-  styleUrls: ['./characters-list.component.css'],
+  styleUrls: ['./characters-list.component.scss'],
 })
 export class CharactersListComponent {
   characters$ = this.dataServices.charactersSubject$;

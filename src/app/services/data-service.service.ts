@@ -21,6 +21,8 @@ const QUERY = gql`
         id
         status
         image
+        gender
+        species
       }
     }
   }
