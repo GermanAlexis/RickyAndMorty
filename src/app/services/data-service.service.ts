@@ -4,17 +4,18 @@ import {
   ICharacter,
 } from '@app/shared/interfaces/data.interface';
 import { Apollo, gql } from 'apollo-angular';
-import { BehaviorSubject, pluck, take, tap, withLatestFrom } from 'rxjs';
+import {
+  BehaviorSubject,
+  find,
+  mergeMap,
+  take,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 import { IEpisode } from '../shared/interfaces/data.interface';
 
 const QUERY = gql`
   {
-    episodes {
-      results {
-        id
-        name
-      }
-    }
     characters {
       results {
         name
@@ -23,6 +24,10 @@ const QUERY = gql`
         image
         gender
         species
+        episode {
+          name
+          id
+        }
       }
     }
   }
@@ -31,7 +36,7 @@ const QUERY = gql`
 @Injectable({
   providedIn: 'root',
 })
-export class DataServiceService {
+export class DataServices {
   private episodesSubject = new BehaviorSubject<IEpisode[]>([]);
   episodesSubject$ = this.episodesSubject.asObservable();
 
@@ -50,8 +55,7 @@ export class DataServiceService {
       .valueChanges.pipe(
         take(1),
         tap(({ data }) => {
-          const { characters, episodes } = data;
-          this.episodesSubject.next(episodes.results);
+          const { characters } = data;
           this.charactersSubject.next(characters.results);
         })
       )
@@ -69,6 +73,10 @@ export class DataServiceService {
             image
             gender
             species
+            episode {
+              name
+              id
+            }
         }
       }
     }
@@ -87,5 +95,12 @@ export class DataServiceService {
         })
       )
       .subscribe();
+  }
+
+  getDetails(id: string): any {
+    return this.charactersSubject$.pipe(
+      mergeMap((characters: ICharacter[]) => characters),
+      find((character: ICharacter) => character?.id === id)
+    );
   }
 }

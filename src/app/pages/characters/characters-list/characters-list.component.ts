@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { Component, HostListener, OnInit, Injectable } from '@angular/core';
-import { DataServiceService } from '../../../services/data-service.service';
+import { DataServices } from '../../../services/data-service.service';
 
 @Component({
   selector: 'app-characters-list',
@@ -10,13 +10,12 @@ import { DataServiceService } from '../../../services/data-service.service';
 })
 export class CharactersListComponent {
   characters$ = this.dataServices.charactersSubject$;
-  episodes$ = this.dataServices.episodesSubject$;
   showbutton: Boolean = false;
-  countPages: number = 0;
+  countPages: number = 1;
   constructor(
     @Inject(DOCUMENT)
     private document: Document,
-    private dataServices: DataServiceService
+    private dataServices: DataServices
   ) {}
 
   @HostListener('window:scroll')

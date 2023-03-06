@@ -1,6 +1,6 @@
 export interface IEpisode {
   name: string;
-  episode: string;
+  id: string;
 }
 
 export interface ICharacter {
@@ -10,6 +10,7 @@ export interface ICharacter {
   image: string;
   species: string;
   status: string;
+  episode: IEpisode[];
 }
 
 export interface ApiResponse<T> {

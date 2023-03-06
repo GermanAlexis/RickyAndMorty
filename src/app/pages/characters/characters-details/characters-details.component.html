@@ -1,1 +1,11 @@
-<p>characters-details works!</p>
+<section class="character__details">
+  <app-characters-card
+    *ngIf="character$ | async as character"
+    [character]="character"
+  ></app-characters-card>
+  <app-episode
+    *ngIf="character$ | async as character"
+    [episode]="character.episode"
+  ></app-episode>
+  <button class="button" *ngIf="showbutton" (click)="onScrollTop()">⬆️</button>
+</section>
