@@ -15,13 +15,16 @@
     <h1>{{ character.name }}</h1>
     <ul>
       <li class="card__list">
-        <label class="table__label">Status</label>: {{ character.status }}
+        <label class="table__label">{{ "Status" | translate }}: </label>
+        {{ character.status | translate }}
       </li>
       <li class="card__list">
-        <label class="table__label">Gender</label>: {{ character.gender }}
+        <label class="table__label">{{ "Gender" | translate }}:</label>
+        {{ character.gender | translate }}
       </li>
       <li class="card__list">
-        <label class="table__label">Specie</label>: {{ character.species }}
+        <label class="table__label">{{ "Human" | translate }}:</label>
+        {{ character.species | translate }}
       </li>
     </ul>
   </div>

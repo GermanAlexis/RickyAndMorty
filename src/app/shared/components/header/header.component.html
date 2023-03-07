@@ -6,9 +6,15 @@
       <span></span>
       <span></span>
       <ul class="navbar">
-        <li><a [routerLink]="['/']" class="link-item">Home</a></li>
         <li>
-          <a [routerLink]="['/character']" class="link-item">Character</a>
+          <a [routerLink]="['/characters']" class="link-item">{{
+            "Characters" | translate
+          }}</a>
+        </li>
+        <li>
+          <a [routerLink]="['/episodes']" class="link-item">{{
+            "Episodes" | translate
+          }}</a>
         </li>
       </ul>
     </div>
