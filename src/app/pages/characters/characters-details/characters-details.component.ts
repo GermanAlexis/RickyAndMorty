@@ -34,7 +34,6 @@ export class CharactersDetailsComponent implements OnInit {
     const yOffSet = window.pageYOffset;
     const scrollTop = this.document.documentElement.scrollTop;
     this.showbutton = (yOffSet || scrollTop) > 50;
-    console.log('this.showbutton: ', this.showbutton);
   }
 
   onScrollTop(): void {

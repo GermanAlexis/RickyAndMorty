@@ -445,16 +445,25 @@ ul.episodes__list {
     -moz-box-shadow: 5px 5px 20px rgba(250, 246, 246, 0.5);
   }
 }
-
+.character__list_detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 /*** Media queries 500 px ***/
 
 @media screen and (max-width: 500px) {
   .container {
-    width: 100%;
+    width: 90%;
   }
 
   /* Card */
   .character__list {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .character__list_detail {
     justify-content: flex-start;
     flex-direction: column;
   }

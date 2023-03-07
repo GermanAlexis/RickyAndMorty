@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EpisodeModule } from './pages/episodes/episode.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'characters', pathMatch: 'full' },
   {
-    path: 'home',
+    path: 'episodes',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
+      import('./pages/episodes/episode.module').then((m) => m.EpisodeModule),
   },
   {
     path: 'character-details/:id',

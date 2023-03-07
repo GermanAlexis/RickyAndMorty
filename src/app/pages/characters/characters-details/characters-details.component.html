@@ -1,11 +1,15 @@
-<section class="character__details">
-  <app-characters-card
-    *ngIf="character$ | async as character"
-    [character]="character"
-  ></app-characters-card>
-  <app-episode
-    *ngIf="character$ | async as character"
-    [episode]="character.episode"
-  ></app-episode>
-  <button class="button" *ngIf="showbutton" (click)="onScrollTop()">⬆️</button>
+<section>
+  <div class="character__list_detail">
+    <app-characters-card
+      *ngIf="character$ | async as character"
+      [character]="character"
+    ></app-characters-card>
+    <app-episode-details
+      *ngIf="character$ | async as character"
+      [episodes]="character.episode"
+    ></app-episode-details>
+    <button class="button" *ngIf="showbutton" (click)="onScrollTop()">
+      ⬆️
+    </button>
+  </div>
 </section>

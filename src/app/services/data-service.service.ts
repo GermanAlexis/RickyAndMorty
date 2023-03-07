@@ -30,6 +30,13 @@ const QUERY = gql`
         }
       }
     }
+    episodes {
+      results {
+        id
+        name
+        episode
+      }
+    }
   }
 `;
 
@@ -37,7 +44,7 @@ const QUERY = gql`
   providedIn: 'root',
 })
 export class DataServices {
-  private episodesSubject = new BehaviorSubject<IEpisode[]>([]);
+  public episodesSubject = new BehaviorSubject<IEpisode[]>([]);
   episodesSubject$ = this.episodesSubject.asObservable();
 
   private charactersSubject = new BehaviorSubject<ICharacter[]>([]);
@@ -55,8 +62,9 @@ export class DataServices {
       .valueChanges.pipe(
         take(1),
         tap(({ data }) => {
-          const { characters } = data;
+          const { characters, episodes } = data;
           this.charactersSubject.next(characters.results);
+          this.episodesSubject.next(episodes.results);
         })
       )
       .subscribe();
@@ -92,6 +100,36 @@ export class DataServices {
           characters = [...characters, ...data.data.characters.results];
 
           this.charactersSubject.next(characters);
+        })
+      )
+      .subscribe();
+  }
+
+  getDataPaginatorEpisodes(pagesNum: number) {
+    const QUERYBYPAGE = gql`
+    {
+
+      episodes(page: ${pagesNum}) {
+      results {
+        id
+        name
+        episode
+      }
+
+      }
+    }
+`;
+    this.apollo
+      .watchQuery<Dataresponse>({
+        query: QUERYBYPAGE,
+      })
+      .valueChanges.pipe(
+        take(1),
+        withLatestFrom(this.episodesSubject$),
+        tap(([data, episodes]) => {
+          episodes = [...episodes, ...data.data.episodes.results];
+
+          this.episodesSubject.next(episodes);
         })
       )
       .subscribe();
