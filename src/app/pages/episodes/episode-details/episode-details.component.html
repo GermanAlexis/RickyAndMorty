@@ -1,7 +1,22 @@
 <section class="container">
-  <ul class="episodes__list">
-    <li *ngFor="let episode of episodes">
-      {{ episode.name }}
-    </li>
-  </ul>
+  <a class="card__link">
+    <ul class="episodes__list">
+      <li (click)="openModal(episode.id)" *ngFor="let episode of episodes">
+        {{ episode.name }}
+      </li>
+    </ul>
+  </a>
 </section>
+
+<div class="modal" [ngClass]="{ active: showModal }">
+  <div class="modal-content">
+    <h1 class="h1__title">
+      Participacion estellar
+      <span class="close" (click)="closeModal()">&times;</span>
+    </h1>
+
+    <div *ngFor="let character of characters">
+      <p>{{ character.name }}</p>
+    </div>
+  </div>
+</div>

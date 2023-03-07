@@ -20,4 +20,5 @@ export interface ApiResponse<T> {
 export interface Dataresponse {
   characters: ApiResponse<ICharacter[]>;
   episodes: ApiResponse<IEpisode[]>;
+  episodebyIds: ICharacter[];
 }

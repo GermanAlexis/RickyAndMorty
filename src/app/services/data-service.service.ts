@@ -141,4 +141,19 @@ export class DataServices {
       find((character: ICharacter) => character?.id === id)
     );
   }
+
+  getDetailsEpisode(id: string) {
+    const QUERYByID = gql`
+      {
+        episodesByIds(ids: [${id}]) {
+          characters {
+            name
+          }
+        }
+      }
+    `;
+    return this.apollo.watchQuery<any>({
+      query: QUERYByID,
+    });
+  }
 }
