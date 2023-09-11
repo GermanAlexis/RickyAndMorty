@@ -1,0 +1,22 @@
+<header>
+  <nav class="menu" role="navigation">
+    <div class="menu__toggle">
+      <input type="checkbox" #checkboxMenu />
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul class="navbar">
+        <li>
+          <a [routerLink]="['/characters']" class="link-item">{{
+            "Characters"
+          }}</a>
+        </li>
+        <li>
+          <a [routerLink]="['/episodes']" class="link-item">{{
+            "Episodes"
+          }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
