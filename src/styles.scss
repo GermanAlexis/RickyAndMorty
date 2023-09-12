@@ -1,0 +1,10 @@
+
+
+.mat-mdc-focus-indicator ::ng-deep {
+  display: none;
+}
+
+
+:host ::ng-deep mat-mdc-menu-item mat-mdc-focus-indicator  {
+  border: 3px red !important;
+}
