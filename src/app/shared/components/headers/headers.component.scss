@@ -1,0 +1,11 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+:host ::ng-deep span::before {
+  border: none;
+}
+
+:host ::ng-deep mat-mdc-menu-item mat-mdc-focus-indicator  .buttonMenu {
+  border: 3px red !important;
+}
