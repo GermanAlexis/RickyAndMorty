@@ -5,8 +5,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   { path: 'dashboard', component: DashboardComponent },
 ];
