@@ -8,4 +8,8 @@ import { Character } from '../../interfaces/character.interfaces';
 })
 export class CardsComponent {
   @Input() character!: Character;
+
+  onCardClick(id: number) {
+    console.log(id);
+  }
 }

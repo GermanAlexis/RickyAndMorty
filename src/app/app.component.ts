@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'RickAndMorty';
-  selectedLanguage = 'es';
+  selectedLanguage = 'en';
 
   constructor(translateService: TranslateService) {
     translateService.setDefaultLang(this.selectedLanguage);
