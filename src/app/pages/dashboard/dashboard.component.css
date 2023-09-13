@@ -2,7 +2,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 3fr) );
   grid-gap: 16px;
+  background-color: #8c43e6
 }
 :host ::ng-deep span::before {
   border: none;
 }
+
+
