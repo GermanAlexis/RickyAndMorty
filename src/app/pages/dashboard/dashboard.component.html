@@ -1,4 +1,9 @@
 <app-headers></app-headers>
+<div *ngIf="isLoading$ | async">
+  <mat-progress-bar mode="query" [value]="100"></mat-progress-bar>
+</div>
 <div class="container">
   <app-cards *ngFor="let character of characters" [character]="character" ></app-cards>
 </div>
+<mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+</mat-paginator>
