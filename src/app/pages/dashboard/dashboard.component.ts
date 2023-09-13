@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
-import { Character } from '../../shared/interfaces/character.interfaces';
+import {
+  Character,
+  IResponseCharacter,
+  Info,
+} from '../../shared/interfaces/character.interfaces';
 import { SpinnerService } from '../services/progress-bar/progress.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +17,10 @@ import { SpinnerService } from '../services/progress-bar/progress.service';
 export class DashboardComponent implements OnInit {
   isLoading$ = this.spinnerService.isLoading$;
   characters: Character[] = [];
+  dataPaginator!: Info;
+  pageIndex: number = 0;
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(
     private charactersService: DashboardService,
@@ -21,9 +31,12 @@ export class DashboardComponent implements OnInit {
     this.getCharacters();
   }
 
-  async getCharacters(): Promise<void> {
-    (await this.charactersService.getCharacters()).subscribe((response) => {
-      this.characters = response.results;
-    });
+  async getCharacters(page?: number): Promise<void> {
+    (await this.charactersService.getCharacters(page)).subscribe(
+      (response: IResponseCharacter) => {
+        this.characters = response.results;
+        this.dataPaginator = response.info;
+      }
+    );
   }
 }

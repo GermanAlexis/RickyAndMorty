@@ -23,7 +23,7 @@ interface Origin {
   url: string;
 }
 
-interface Info {
+export interface Info {
   count: number;
   pages: number;
   next: string;
