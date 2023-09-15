@@ -15,6 +15,7 @@ import { PagesModule } from './pages/pages.module';
 import { MaterialModule } from './material/material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerInterceptor } from './shared/interceptors/progress.interceptor';
+import { RouterModule } from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     SharedModule,
     TranslateModule.forRoot({
       loader: {

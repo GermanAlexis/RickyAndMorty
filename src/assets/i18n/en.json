@@ -1,3 +1,6 @@
 {
-  "Episodes": "Episodesn lalalala"
+  "Episodes": "Episodesn lalalala",
+  "status": "Status",
+  "gender": "Gender",
+  "type": "Type"
 }

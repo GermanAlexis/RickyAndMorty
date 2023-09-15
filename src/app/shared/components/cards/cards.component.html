@@ -1,19 +1,17 @@
-
-
-
-<mat-card class="card">
+<mat-card class="card" >
   <img mat-card-lg-image [src]="character.image" [alt]="character.image" >
   <mat-card-subtitle>
     <mat-card-title >{{ character.name }} {{ character.id }}</mat-card-title>
   </mat-card-subtitle>
-
   <mat-card-content style="color: #4bce09;" >
     <div class="card_details">
-      <span style="color: #fff;">Estado: </span> {{ character.status }}
-      <span style="color: #fff;">Genero: </span> {{ character.gender }}
-      <span style="color: #fff;">Tipo: </span> {{ character.type }}
+      <span style="color: #fff;">{{'status' | translate }} :</span> {{ character.status }}
+      <span style="color: #fff;">{{'gender' | translate }} :</span> {{ character.gender }}
+      <span style="color: #fff;">{{'type' | translate }} :</span> {{ character.type }}
     </div>
-
   </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="openDialog(character.id)">Profile</button>
+  </mat-card-actions>
 
 </mat-card>

@@ -39,4 +39,8 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  getProfile(e: number) {
+    console.log('e: ', e);
+  }
 }
