@@ -18,8 +18,6 @@ export class CardsComponent {
       data: id,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.close;
   }
 }

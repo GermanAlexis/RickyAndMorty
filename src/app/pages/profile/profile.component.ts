@@ -19,8 +19,10 @@ export class ProfileComponent implements OnInit {
 
   async getInformationOfProfile() {
     console.log(this.data);
-    (await this.dashboardService.getCharacterById(1)).subscribe((response) => {
-      console.table(response.episode);
-    });
+    (await this.dashboardService.getCharacterById(this.data)).subscribe(
+      (response) => {
+        console.table(response.episode);
+      }
+    );
   }
 }
