@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Character } from 'src/app/shared/interfaces/character.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  character!: Character;
+  numberCharacter: string[] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: number,
     private dashboardService: DashboardService
@@ -18,10 +22,14 @@ export class ProfileComponent implements OnInit {
   }
 
   async getInformationOfProfile() {
-    console.log(this.data);
     (await this.dashboardService.getCharacterById(this.data)).subscribe(
-      (response) => {
-        console.table(response.episode);
+      (response: Character) => {
+        if (response) {
+          this.character = response;
+          this.numberCharacter = response.episode.map(
+            (episode) => episode.split('/')[5]
+          );
+        }
       }
     );
   }

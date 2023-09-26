@@ -1,7 +1,7 @@
 <mat-card class="card" color="primary" >
   <img mat-card-lg-image [src]="character.image" [alt]="character.image" >
   <mat-card-subtitle>
-    <mat-card-title >{{ character.name }} {{ character.id }}</mat-card-title>
+    <mat-card-title >{{ character.name }}</mat-card-title>
   </mat-card-subtitle>
   <mat-card-content style="color: #4bce09;" >
     <div class="card_details">
@@ -11,7 +11,7 @@
       <span style="color: #fff;">{{'gender' | translate }} :</span> {{ character.gender }}
     </div>
     <div class="card_details">
-      <span style="color: #fff;">{{'type' | translate }} :</span> {{ character.type }}
+      <span style="color: #fff;">{{'specie' | translate }} :</span> {{ character.species }}
     </div>
   </mat-card-content>
   <mat-card-actions align="end">

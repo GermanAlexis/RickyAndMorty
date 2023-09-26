@@ -14,10 +14,10 @@ export class CardsComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(id: number) {
-    const dialogRef = this.dialog.open(ProfileComponent, {
+    this.dialog.open(ProfileComponent, {
       data: id,
+      width: '400px',
+      height: '600px',
     });
-
-    dialogRef.close;
   }
 }

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Character, Info } from '../../interfaces/character.interfaces';
+import { Info } from '../../interfaces/character.interfaces';
 
 @Component({
   selector: 'app-paginator',
@@ -17,8 +17,8 @@ export class PaginatorComponent {
   showFirstLastButtons = false;
   disabled = false;
 
-  @Input('inputPaginator') set paginator(i: Info) {
-    this.length = i.count;
+  @Input('inputPaginator') set paginator(inputPaginator: Info) {
+    this.length = inputPaginator.count;
   }
 
   @Output() onItemAdded = new EventEmitter<number>();
