@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from '../../interfaces/character.interfaces';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
@@ -14,7 +14,9 @@ export class CardsComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(id: number) {
-    const dialogRef = this.dialog.open(ProfileComponent);
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      data: id,
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

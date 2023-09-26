@@ -1,13 +1,4 @@
 <app-headers></app-headers>
-<div class="overlay" *ngIf="isLoading$ | async">
-  <mat-progress-bar class="overlay" mode="query" [value]="100"></mat-progress-bar>
-  <mat-progress-spinner
-  class="example-margin overlay"
-  [color]="color"
-  [mode]="mode"
-  [value]="100">
-</mat-progress-spinner>
-</div>
 <div class="container">
   <app-cards *ngFor="let character of characters" [character]="character"></app-cards>
 </div>

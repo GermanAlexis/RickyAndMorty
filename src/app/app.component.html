@@ -1,1 +1,10 @@
+<div class="overlay" *ngIf="isLoading$ | async">
+  <mat-progress-bar class="overlay" mode="query" [value]="100"></mat-progress-bar>
+  <mat-progress-spinner
+  class="example-margin overlay"
+  [color]="color"
+  [mode]="mode"
+  [value]="100">
+</mat-progress-spinner>
+</div>
 <router-outlet></router-outlet>

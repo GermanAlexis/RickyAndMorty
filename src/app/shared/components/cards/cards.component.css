@@ -17,7 +17,7 @@
   transition: box-shadow 0.5s;
   border-radius: 0.5rem;
   cursor: pointer;
-  background-color: #8c43e6;
+  /* background-color: #8c43e6; */
 
   img {
     max-width: 100%;

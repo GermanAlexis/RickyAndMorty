@@ -5,9 +5,6 @@ import {
   IResponseCharacter,
   Info,
 } from '../../shared/interfaces/character.interfaces';
-import { SpinnerService } from '../services/progress-bar/progress.service';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,17 +12,11 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  isLoading$ = this.spinnerService.isLoading$;
   characters: Character[] = [];
   dataPaginator!: Info;
   pageIndex: number = 0;
-  color: ThemePalette = 'primary';
-  mode: ProgressSpinnerMode = 'indeterminate';
 
-  constructor(
-    private charactersService: DashboardService,
-    private spinnerService: SpinnerService
-  ) {}
+  constructor(private charactersService: DashboardService) {}
 
   ngOnInit(): void {
     this.getCharacters();
@@ -38,9 +29,5 @@ export class DashboardComponent implements OnInit {
         this.dataPaginator = response.info;
       }
     );
-  }
-
-  getProfile(e: number) {
-    console.log('e: ', e);
   }
 }
