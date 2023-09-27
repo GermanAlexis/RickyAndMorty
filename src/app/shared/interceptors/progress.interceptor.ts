@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { finalize } from 'rxjs';
-import { SpinnerService } from 'src/app/pages/services/progress-bar/progress.service';
+import { SpinnerService } from 'src/app/services/progress-bar/progress.service';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {

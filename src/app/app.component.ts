@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { TranslateService } from '@ngx-translate/core';
-import { SpinnerService } from './pages/services/progress-bar/progress.service';
+import { SpinnerService } from './services/progress-bar/progress.service';
 
 @Component({
   selector: 'app-root',

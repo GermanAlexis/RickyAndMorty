@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
-import { DashboardService } from '../services/dashboard.service';
+import { DashboardService } from '../../services/dashboard.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Character } from 'src/app/shared/interfaces/character.interfaces';
 
